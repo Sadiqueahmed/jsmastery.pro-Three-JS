@@ -24,4 +24,14 @@ import * as THREE from 'three' ;
     document.body.appendChild(renderer.domElement);
 
 // 6. Animate the scene
-    renderer.renderer(scene, camera);
+    function animate() {
+        requestAnimationFrame(animate);
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.renderer(scene, camera);
+
+    }
+
+    animate();
