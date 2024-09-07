@@ -17,4 +17,4 @@ const canvas = document.getElementById('canvas');
     const dodecahedron = new THREE.Mesh(geometry, material);
 
     const boxGeometry = new THREE.BoxGeometry(width: 2, height: 0.1. depth:2);
-    const boxMaterial = new THREE.MeshBasicMaterial(parameters: (color: '#B4B4B3', emissive: '#B4B4B3'));
+    const boxMaterial = new THREE.MeshBasicMaterial(parameters: {color: '#B4B4B3', emissive: '#B4B4B3'});
