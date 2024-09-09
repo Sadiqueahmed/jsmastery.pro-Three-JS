@@ -18,3 +18,16 @@ const canvas = document.getElementById('canvas');
 
     const boxGeometry = new THREE.BoxGeometry(width: 2, height: 0.1. depth:2);
     const boxMaterial = new THREE.MeshBasicMaterial(parameters: {color: '#B4B4B3', emissive: '#B4B4B3'});
+    const box = new THREE.Mesh(boxGeometry, boxMaterial);
+    box.position.y = -1.5 ;
+
+    scene.add(dodecahedron);
+    scene.add(box);
+
+    // 4. Lights
+    const light = new THREE.SpotLight(0x006769, 100);
+    light.position.set(1, 1, 1);
+    scene.add(light);
+
+    // 5. Renderer
+    const renderer = new THREE.WebGLRenderer(parameter:{canvas });
