@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {color, parameter} from "three/tsl";
+import {OrbitControls} from "three/addons";
 
 const canvas = document.getElementById('canvas');
 
@@ -31,3 +32,13 @@ const canvas = document.getElementById('canvas');
 
     // 5. Renderer
     const renderer = new THREE.WebGLRenderer(parameter:{canvas });
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    render.setPixelRatio(window.devicePixelRatio);
+    renderer.render(scene, camera);
+
+    renderer.render(scene, camera);
+
+    // 6. Add OrbitControls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
