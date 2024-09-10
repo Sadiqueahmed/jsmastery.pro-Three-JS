@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {color, parameter} from "three/tsl";
 import {OrbitControls} from "three/addons/controls/OrbitControls.js";
+import renderer from "three/src/renderers/common/Renderer.js";
 
 const canvas = document.getElementById('canvas');
 
@@ -58,7 +59,14 @@ camera.position.z = 5;
         controls.update();
 
         renderer.render(scene, camera);
-    };
+    }
 
-    animate();
+    // 8. Handle Window resizing
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+    animate()
 
