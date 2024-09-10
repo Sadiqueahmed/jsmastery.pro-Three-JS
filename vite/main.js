@@ -9,18 +9,18 @@ const canvas = document.getElementById('canvas');
     scene.background = new THREE.Color('#F0F0F0');
 
 // 2. Camera
-    const camera = new THREE.PerspectiveCamera(fov:75, aspect:window.innerWidth / window.innerHeight, near:0.1, far: 1000);
-    camera.position.z = 5;
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
 
 // 3. Object
     const geometry = new THREE.DodechedronGeometry();
     const material = new THREE.MeshBasicMaterial({color: '#F468585',  emissive: '#468585'});
     const dodecahedron = new THREE.Mesh(geometry, material);
 
-    const boxGeometry = new THREE.BoxGeometry(width: 2, height: 0.1. depth:2);
-    const boxMaterial = new THREE.MeshBasicMaterial(parameters: {color: '#B4B4B3', emissive: '#B4B4B3'});
+    const boxGeometry = new THREE.BoxGeometry(2, 0.1, 2);
+    const boxMaterial = new THREE.MeshBasicMaterial({ color: '#B4B4B3', emissive: '#B4B4B3' });
     const box = new THREE.Mesh(boxGeometry, boxMaterial);
-    box.position.y = -1.5 ;
+    box.position.y = -1.5;
 
     scene.add(dodecahedron);
     scene.add(box);
@@ -31,13 +31,13 @@ const canvas = document.getElementById('canvas');
     scene.add(light);
 
     // 5. Renderer
-    const renderer = new THREE.WebGLRenderer(parameter:{canvas });
+    const renderer = new THREE.WebGLRenderer({ canvas });
 
     renderer.setSize(window.innerWidth, window.innerHeight);
-    render.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.render(scene, camera);
 
-    renderer.render(scene, camera);
+
 
     // 6. Add OrbitControls
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -52,5 +52,13 @@ const canvas = document.getElementById('canvas');
 
         dodecahedron.rotation.x += 0.01;
         dodecahedron.rotation.y += 0.01;
-    }
+
+        box.rotation.y += 0.005;
+
+        controls.update();
+
+        renderer.render(scene, camera);
+    };
+
+    animate();
 
